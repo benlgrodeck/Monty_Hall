@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monty Hall · Switch or stay?</title>
+<meta name="description" content="Play the Monty Hall problem and compare your win rates when you switch doors or stay with your first choice.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23172135'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-size='25' fill='%23f6c95c'%3E3%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><script defer src="game.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<main>
+<header><span class="eyebrow">THE PROBABILITY PLAYGROUND</span><h1>Switch or stay?</h1><p>Three doors. Two goats. One car. Put your intuition to the test.</p></header>
+<div class="layout">
+<section class="stage" aria-label="Monty Hall game">
+<div class="stage-top"><span class="tag">THE MONTY HALL PROBLEM</span><span id="round">Round 1</span></div>
+<div class="instruction" aria-live="polite" aria-atomic="true"><h2 id="heading">Pick your first door.</h2><p id="message">A car is hidden behind one door. Which one will you choose?</p></div>
+<div class="doors" id="doors">
+<button class="door" data-door="0"><span class="door-title">DOOR</span><span class="door-number">1</span><span class="prize" aria-hidden="true"></span><span class="door-label">Choose door</span></button>
+<button class="door" data-door="1"><span class="door-title">DOOR</span><span class="door-number">2</span><span class="prize" aria-hidden="true"></span><span class="door-label">Choose door</span></button>
+<button class="door" data-door="2"><span class="door-title">DOOR</span><span class="door-number">3</span><span class="prize" aria-hidden="true"></span><span class="door-label">Choose door</span></button>
+</div>
+<div class="actions" id="choices" hidden><button id="stay" class="secondary">Stay with door 1</button><button id="switch" class="primary">Switch to door 2</button></div>
+<div class="actions" id="next-area" hidden><button id="next" class="primary">Play another round <span aria-hidden="true">↗</span></button></div>
+<p id="hint" class="hint">The host knows where the car is and always reveals a goat.</p>
+</section>
+<aside class="scoreboard" aria-label="Your results">
+<div class="score-heading"><h2>Your results</h2><span id="total">0 played</span></div>
+<p class="small">Your win rate, by decision.</p>
+<div class="stat switch-stat"><div class="stat-top"><h3>Switch</h3><span>↗</span></div><strong id="switch-rate">—</strong><div class="track"><div id="switch-bar"></div></div><p id="switch-count">0 wins / 0 rounds</p></div>
+<div class="stat stay-stat"><div class="stat-top"><h3>Stay</h3><span>↳</span></div><strong id="stay-rate">—</strong><div class="track"><div id="stay-bar"></div></div><p id="stay-count">0 wins / 0 rounds</p></div>
+<p class="small" id="storage-note">Saved in this browser. Only your completed rounds count.</p>
+<button id="reset" class="text-button">Reset results</button>
+<div id="reset-confirm" hidden><p class="small">Clear both strategy records?</p><button id="confirm-reset" class="secondary">Clear results</button> <button id="cancel-reset" class="text-button">Cancel</button></div>
+<p class="sr-only" id="stats-status" aria-live="polite"></p>
+</aside>
+</div>
+<details><summary>How does it work? <span>The rules & the mathematics</span></summary><div class="explanation"><div><h3>The host’s promise</h3><p>The car is placed randomly. After your first pick, the host opens an unchosen door with a goat, then always offers you a switch. If either goat door is available, the host chooses randomly.</p></div><div><h3>Why switching wins more often</h3><p>Your first pick has a 1 in 3 chance of being the car. Staying wins only when that first pick was right. Switching wins whenever your first pick was wrong: 2 out of 3 times, on average.</p><p>Expected win rates: <strong>switch ≈ 66.7%</strong>; <strong>stay ≈ 33.3%</strong>. Small samples can look very different. Try both strategies over many rounds.</p></div></div></details>
+<footer>A small experiment in changing your mind.</footer>
+</main>
+</body></html>
